@@ -141,4 +141,5 @@ We desided to make in this design and color-spector to be more user-friendly.
 2. Blue - name of our entities;
 3. Yellow - attributes;
 4. Purple - actions;
+
 In ER diagram we have 9 entities. Each entity is our table. You can notice that in diagram we made everywhere "one to many" relationship. It because we have one online pharmacy and many user, pharmacy,drugs.
