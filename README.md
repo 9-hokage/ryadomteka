@@ -165,7 +165,11 @@ python manage.py runserver
 ### Frontend
 
 1. Install all dependencies from npm. 
+```
 npm install
-
+```
 2. Run the server.
+```
 npm run start
+```
+
