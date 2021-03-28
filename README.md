@@ -143,3 +143,21 @@ We desided to make in this design and color-spector to be more user-friendly.
 4. Purple - actions;
 
 In ER diagram we have 9 entities. Each entity is our table. You can notice that in diagram we made everywhere "one to many" relationship. It because we have one online pharmacy and many user, pharmacy,drugs.
+
+
+## How to run project
+
+### Backend 
+1. Run Oracle database. Install dependency for python.
+```
+pip install -r requirements.txt
+```
+2. Change credentials in settings.py file.
+3. Migrate changes to database: 
+```
+python manage.py migrate
+```
+4. Run the server.
+```
+python manage.py runserver
+```
