@@ -1,0 +1,16 @@
+ 
+Before:
+    select s.name
+    from drugs 
+    inner join drugs_storedrugs d on d.drug_id=drugs.ID
+    inner join stores s ON s.id=d.store_id
+    inner join drugs_boughtdrugs db on db.drug_id=drugs.id
+    where drugs.price>1000 and drugs.recipe=0  
+1. 15 ms
+2. 14 ms
+3. 10 ms 
+4. 13 ms
+5. 14 ms
+Average time: 13.2 ms
+
+
