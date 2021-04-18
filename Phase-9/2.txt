@@ -1,0 +1,22 @@
+ 
+Before:
+    SELECT * FROM stores S 
+    INNER JOIN drugs_storedrugs  D ON D.store_id=S.ID
+    INNER JOIN drugs  ON drugs.ID=D.drug_id
+    WHERE  drugs.country_id=(SELECT ID FROM ryadomteka_countries WHERE NAME='Switzerland') AND S.city_id=(SELECT ID FROM ryadomteka_cities WHERE NAME='Павлодар' ) AND substr(S.work_time_weekdays, 22, 5)='20:00' ; 
+1. 5 ms
+2. 7 ms
+3. 2 ms 
+4. 6 ms
+5. 5 ms
+Average time: 5 ms
+
+After:
+    SELECT S.name FROM (stores S join ryadomteka_cities on  S.city_id=ryadomteka_cities.id and ryadomteka_cities.NAME='Павлодар' and substr(S.work_time_weekdays, 22, 5)='20:00') 
+    join drugs_storedrugs  D ON D.store_id=S.ID join (drugs join  ryadomteka_countries on drugs.country_id=ryadomteka_countries.id and ryadomteka_countries.name='Switzerland' ) ON drugs.ID=D.drug_id;
+1. 2 ms
+2. 3 ms
+3. 2 ms
+4. 2 ms
+5. 4 ms
+Average time: 2.6 ms

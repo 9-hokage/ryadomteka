@@ -1,0 +1,19 @@
+ 
+Before:
+    select name,price  from (
+    select sum(d.price) price, s.name name from drugs d 
+        inner join drugs_storedrugs dd on d.id=dd.drug_id
+        inner join stores s on s.id=dd.store_id
+        inner join drugs_boughtdrugs db on d.id=db.drug_id
+        inner join users u on u.id=db.user_id
+    where u.date_joined>SYSDATE-7
+    group by s.name order by price desc
+  )
+1. 54 ms
+2. 44 ms
+3. 60 ms 
+4. 47 ms
+5. 50 ms
+Average time: 51 ms
+
+
